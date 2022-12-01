@@ -24,7 +24,7 @@ public sealed class ArticlesDbContext : DbContext, IContext<Article>
         obj.CreationDate = DateTime.Now;
         obj.LastModificationDate = obj.CreationDate;
         Articles.Add(obj);
-        this.SaveChanges();
+        SaveChanges();
     }
 
     public void Update(Article obj)
@@ -33,13 +33,13 @@ public sealed class ArticlesDbContext : DbContext, IContext<Article>
         article.Title = obj.Title;
         article.Content = obj.Content;
         article.LastModificationDate = DateTime.Now;
-        this.SaveChanges();
+        SaveChanges();
     }
 
     public void Delete(Article obj)
     {
         Articles.Remove(obj);
-        this.SaveChanges();
+        SaveChanges();
     }
 
     public Article GetSingle(Guid id)

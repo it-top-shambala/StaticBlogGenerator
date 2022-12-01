@@ -4,7 +4,7 @@ namespace StaticBlogGenerator.Lib.BL;
 
 public class ArticlesContext : IContext<Article>
 {
-    private IContext<Article> _context;
+    private readonly IContext<Article> _context;
 
     public ArticlesContext(IContext<Article> context)
     {
