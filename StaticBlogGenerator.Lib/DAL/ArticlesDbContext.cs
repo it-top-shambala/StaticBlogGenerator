@@ -47,8 +47,8 @@ public sealed class ArticlesDbContext : DbContext, IContext<Article>
         return await Articles.FirstAsync(a => a.Guid == id);
     }
 
-    public IAsyncEnumerable<Article> GetAllAsyncEnumerable()
+    public IAsyncEnumerable<Article> GetAllAsync()
     {
-        return (IAsyncEnumerable<Article>)Articles;
+        return Articles.AsAsyncEnumerable();
     }
 }
