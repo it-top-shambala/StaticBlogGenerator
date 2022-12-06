@@ -11,28 +11,28 @@ public class ArticlesContext : IContext<Article>
         _context = context;
     }
 
-    public void Insert(Article obj)
+    public async Task InsertAsync(Article obj)
     {
-        _context.Insert(obj);
+        await _context.InsertAsync(obj);
     }
 
-    public void Update(Article obj)
+    public async Task UpdateAsync(Article obj)
     {
-        _context.Update(obj);
+        await _context.UpdateAsync(obj);
     }
 
-    public void Delete(Article obj)
+    public async Task DeleteAsync(Article obj)
     {
-        _context.Delete(obj);
+        await _context.DeleteAsync(obj);
     }
 
-    public Article GetSingle(Guid id)
+    public async Task<Article> GetSingleAsync(Guid id)
     {
-        return _context.GetSingle(id);
+        return await _context.GetSingleAsync(id);
     }
 
-    public IEnumerable<Article> GetAll()
+    public IAsyncEnumerable<Article> GetAllAsyncEnumerable()
     {
-        return _context.GetAll();
+        return _context.GetAllAsyncEnumerable();
     }
 }

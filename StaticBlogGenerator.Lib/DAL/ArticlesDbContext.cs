@@ -19,36 +19,36 @@ public sealed class ArticlesDbContext : DbContext, IContext<Article>
         optionsBuilder.UseSqlite(_connectionString);
     }
 
-    public void Insert(Article obj)
+    public async Task InsertAsync(Article obj)
     {
         obj.CreationDate = DateTime.Now;
         obj.LastModificationDate = obj.CreationDate;
-        Articles.Add(obj);
-        SaveChanges();
+        await Articles.AddAsync(obj);
+        await SaveChangesAsync();
     }
 
-    public void Update(Article obj)
+    public async Task UpdateAsync(Article obj)
     {
         var article = Articles.First(a => a.Guid == obj.Guid);
         article.Title = obj.Title;
         article.Content = obj.Content;
         article.LastModificationDate = DateTime.Now;
-        SaveChanges();
+        await SaveChangesAsync();
     }
 
-    public void Delete(Article obj)
+    public async Task DeleteAsync(Article obj)
     {
         Articles.Remove(obj);
-        SaveChanges();
+        await SaveChangesAsync();
     }
 
-    public Article GetSingle(Guid id)
+    public async Task<Article> GetSingleAsync(Guid id)
     {
-        return Articles.First(a => a.Guid == id);
+        return await Articles.FirstAsync(a => a.Guid == id);
     }
 
-    public IEnumerable<Article> GetAll()
+    public IAsyncEnumerable<Article> GetAllAsyncEnumerable()
     {
-        return Articles;
+        return (IAsyncEnumerable<Article>)Articles;
     }
 }
