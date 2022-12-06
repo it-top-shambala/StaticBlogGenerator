@@ -20,7 +20,7 @@ public class MainWindowModel
 
     private async Task InitArticles()
     {
-        await foreach (var article in _articlesContext.GetAllAsyncEnumerable())
+        await foreach (var article in _articlesContext.GetAllAsync())
         {
             Articles.Add(article);
         }

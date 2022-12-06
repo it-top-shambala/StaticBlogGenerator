@@ -31,8 +31,8 @@ public class ArticlesContext : IContext<Article>
         return await _context.GetSingleAsync(id);
     }
 
-    public IAsyncEnumerable<Article> GetAllAsyncEnumerable()
+    public IAsyncEnumerable<Article> GetAllAsync()
     {
-        return _context.GetAllAsyncEnumerable();
+        return _context.GetAllAsync();
     }
 }

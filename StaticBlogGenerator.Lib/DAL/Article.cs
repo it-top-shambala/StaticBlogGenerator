@@ -11,17 +11,11 @@ public class Article
     [Key]
     public Guid Guid { get; set; }
 
-    [Column("title")]
-    [Required]
-    public string Title { get; set; }
+    [Column("title")] [Required] public string Title { get; set; }
 
-    [Column("content")]
-    [Required]
-    public string Content { get; set; }
+    [Column("content")] [Required] public string Content { get; set; }
 
-    [Column("creation_date")]
-    [Required]
-    public DateTime CreationDate { get; set; }
+    [Column("creation_date")] [Required] public DateTime CreationDate { get; set; }
 
     [Column("last_modification_date")]
     [Required]

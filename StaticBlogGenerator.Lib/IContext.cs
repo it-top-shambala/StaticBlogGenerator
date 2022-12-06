@@ -6,5 +6,5 @@ public interface IContext<T>
     public Task UpdateAsync(T obj);
     public Task DeleteAsync(T obj);
     public Task<T> GetSingleAsync(Guid id);
-    public IAsyncEnumerable<T> GetAllAsyncEnumerable();
+    public IAsyncEnumerable<T> GetAllAsync();
 }
