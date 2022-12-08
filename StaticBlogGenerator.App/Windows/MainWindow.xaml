@@ -22,6 +22,8 @@
         <StaticResource ResourceKey="MainWindowModel" />
     </Window.DataContext>
 
+
+
     <Window.InputBindings>
         <KeyBinding Command="{Binding CommandConnect}"
                     Key="F3" />
@@ -121,11 +123,32 @@
                     <Label Grid.Column="0" Target="InputContent"
                            Content="Содержимое"
                            Style="{StaticResource StyleLabel}" />
-                    <TextBox Grid.Column="1" x:Name="InputContent"
-                             VerticalScrollBarVisibility="Auto"
-                             Text="{Binding SelectedArticle.Content}"
-                             TextWrapping="Wrap"
-                             Style="{StaticResource StyleInput}" />
+                    <!-- TODO Подобрать простой редактор текста -->
+                    <DockPanel Grid.Column="1">
+                        <ToolBar DockPanel.Dock="Top">
+                            <Button Command="ApplicationCommands.Open">
+                                <Image Source="/WpfTutorialSamples;component/Images/folder.png" Width="16" Height="16" />
+                            </Button>
+                            <Button Command="ApplicationCommands.Save">
+                                <Image Source="/WpfTutorialSamples;component/Images/disk.png" Width="16" Height="16" />
+                            </Button>
+                            <Separator />
+                            <ToggleButton Command="EditingCommands.ToggleBold">
+                                <Image Source="/WpfTutorialSamples;component/Images/text_bold.png" Width="16" Height="16" />
+                            </ToggleButton>
+                            <ToggleButton Command="EditingCommands.ToggleItalic">
+                                <Image Source="/WpfTutorialSamples;component/Images/text_italic.png" Width="16" Height="16" />
+                            </ToggleButton>
+                            <ToggleButton Command="EditingCommands.ToggleUnderline">
+                                <Image Source="/WpfTutorialSamples;component/Images/text_underline.png" Width="16" Height="16" />
+                            </ToggleButton>
+                            <Separator />
+                            <ComboBox Width="150" />
+                            <ComboBox Width="50" IsEditable="True" />
+                        </ToolBar>
+                        <RichTextBox x:Name="InputContent"
+                                     Document="{Binding SelectedArticle.Content}" />
+                    </DockPanel>
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
