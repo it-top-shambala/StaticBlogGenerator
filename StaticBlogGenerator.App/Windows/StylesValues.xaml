@@ -9,22 +9,21 @@
     <sys:Double x:Key="WidthInput">300</sys:Double>
     <sys:Double x:Key="WidthButton">125</sys:Double>
 
-    <SolidColorBrush x:Key="ForegroundColor" Color="White"/>
-    <SolidColorBrush x:Key="BackgroundColorDefault" Color="DarkGray"/>
-    <SolidColorBrush x:Key="BackgroundColorSave" Color="DarkGreen"/>
-    <SolidColorBrush x:Key="BackgroundColorClear" Color="DarkRed"/>
+    <SolidColorBrush x:Key="ForegroundColor" Color="White" />
+    <SolidColorBrush x:Key="BackgroundColorDefault" Color="DarkGray" />
+    <SolidColorBrush x:Key="BackgroundColorSave" Color="DarkGreen" />
+    <SolidColorBrush x:Key="BackgroundColorClear" Color="DarkRed" />
 
     <Thickness x:Key="PaddingDefault"
                Bottom="{StaticResource Padding}"
                Top="{StaticResource Padding}"
                Left="{StaticResource Padding}"
-               Right="{StaticResource Padding}"/>
+               Right="{StaticResource Padding}" />
 
     <Thickness x:Key="MarginDefault"
                Bottom="{StaticResource Margin}"
                Top="{StaticResource Margin}"
                Left="{StaticResource Margin}"
-               Right="{StaticResource Margin}"/>
+               Right="{StaticResource Margin}" />
 
 </ResourceDictionary>
-

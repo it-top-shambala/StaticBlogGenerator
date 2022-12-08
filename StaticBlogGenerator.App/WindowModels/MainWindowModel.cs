@@ -38,9 +38,9 @@ public class MainWindowModel : BaseNotification
         Articles = new ObservableCollection<Article>();
 
         CommandConnect = new LambdaCommand(
-            execute: async _ => await InitArticles(),
-            canExecute: _ => Articles.Count == 0
-            );
+            async _ => await InitArticles(),
+            _ => Articles.Count == 0
+        );
     }
 
     private async Task InitArticles()
@@ -51,6 +51,7 @@ public class MainWindowModel : BaseNotification
         {
             Articles.Add(article);
         }
+
         CommandConnect.OnCanExecuteChanged();
     }
 }

@@ -24,24 +24,24 @@
 
     <Window.InputBindings>
         <KeyBinding Command="{Binding CommandConnect}"
-                    Key="F3"/>
+                    Key="F3" />
         <KeyBinding Command="{Binding CommandConnect}"
-                   Modifiers="Alt" Key="C" />
+                    Modifiers="Alt" Key="C" />
     </Window.InputBindings>
 
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0">
             <Menu>
                 <MenuItem Header="Подключиться"
                           Command="{Binding CommandConnect}"
-                          Style="{StaticResource StyleMenu}"/>
+                          Style="{StaticResource StyleMenu}" />
                 <MenuItem Header="Создать новую статью"
-                          Style="{StaticResource StyleMenu}"/>
+                          Style="{StaticResource StyleMenu}" />
             </Menu>
         </Grid>
 
@@ -78,65 +78,65 @@
                     <ContextMenu>
                         <MenuItem Header="Удалить статью"
                                   InputGestureText="Del"
-                                  Command="Delete"/>
+                                  Command="Delete" />
                         <MenuItem Header="Создать статью"
                                   InputGestureText="Ins"
-                                  Command="New"/>
+                                  Command="New" />
                     </ContextMenu>
                 </DataGrid.ContextMenu>
                 <DataGrid.InputBindings>
                     <KeyBinding Command="Delete"
-                                Key="Delete"/>
+                                Key="Delete" />
                     <KeyBinding Command="New"
-                                Key="Insert"/>
+                                Key="Insert" />
                 </DataGrid.InputBindings>
             </DataGrid>
 
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
                 <Grid Grid.Row="0">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Target="InputTitle"
                            Content="Заголовок"
-                           Style="{StaticResource StyleLabel}"/>
+                           Style="{StaticResource StyleLabel}" />
                     <TextBox Grid.Column="1" x:Name="InputTitle"
                              Text="{Binding SelectedArticle.Title}"
-                             Style="{StaticResource StyleInput}"/>
+                             Style="{StaticResource StyleInput}" />
                 </Grid>
                 <Grid Grid.Row="1">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Label Grid.Column="0" Target="InputContent"
                            Content="Содержимое"
-                           Style="{StaticResource StyleLabel}"/>
+                           Style="{StaticResource StyleLabel}" />
                     <TextBox Grid.Column="1" x:Name="InputContent"
                              VerticalScrollBarVisibility="Auto"
                              Text="{Binding SelectedArticle.Content}"
                              TextWrapping="Wrap"
-                             Style="{StaticResource StyleInput}"/>
+                             Style="{StaticResource StyleInput}" />
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
                     <Button Grid.Column="0" Content="Очистить"
-                            Style="{StaticResource StyleButtonClear}"/>
+                            Style="{StaticResource StyleButtonClear}" />
                     <Button Grid.Column="1" Content="Сохранить"
-                            Style="{StaticResource StyleButtonSave}"/>
+                            Style="{StaticResource StyleButtonSave}" />
                 </Grid>
             </Grid>
         </Grid>
