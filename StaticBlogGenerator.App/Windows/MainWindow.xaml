@@ -22,13 +22,13 @@
         <StaticResource ResourceKey="MainWindowModel" />
     </Window.DataContext>
 
-
-
     <Window.InputBindings>
         <KeyBinding Command="{Binding CommandConnect}"
                     Key="F3" />
         <KeyBinding Command="{Binding CommandConnect}"
                     Modifiers="Alt" Key="C" />
+        <KeyBinding Command="{Binding CommandNew}"
+                    Key="Insert"/>
     </Window.InputBindings>
 
     <Grid>
@@ -43,6 +43,7 @@
                           Command="{Binding CommandConnect}"
                           Style="{StaticResource StyleMenu}" />
                 <MenuItem Header="Создать новую статью"
+                          Command="{Binding CommandNew}"
                           Style="{StaticResource StyleMenu}" />
             </Menu>
         </Grid>
@@ -97,7 +98,7 @@
             <Grid Grid.Column="1">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
@@ -111,7 +112,7 @@
                            Content="Заголовок"
                            Style="{StaticResource StyleLabel}" />
                     <TextBox Grid.Column="1" x:Name="InputTitle"
-                             Text="{Binding SelectedArticle.Title}"
+                             Text="{Binding Title}"
                              Style="{StaticResource StyleInput}" />
                 </Grid>
                 <Grid Grid.Row="1">
@@ -123,32 +124,15 @@
                     <Label Grid.Column="0" Target="InputContent"
                            Content="Содержимое"
                            Style="{StaticResource StyleLabel}" />
-                    <!-- TODO Подобрать простой редактор текста -->
-                    <DockPanel Grid.Column="1">
-                        <ToolBar DockPanel.Dock="Top">
-                            <Button Command="ApplicationCommands.Open">
-                                <Image Source="/WpfTutorialSamples;component/Images/folder.png" Width="16" Height="16" />
-                            </Button>
-                            <Button Command="ApplicationCommands.Save">
-                                <Image Source="/WpfTutorialSamples;component/Images/disk.png" Width="16" Height="16" />
-                            </Button>
-                            <Separator />
-                            <ToggleButton Command="EditingCommands.ToggleBold">
-                                <Image Source="/WpfTutorialSamples;component/Images/text_bold.png" Width="16" Height="16" />
-                            </ToggleButton>
-                            <ToggleButton Command="EditingCommands.ToggleItalic">
-                                <Image Source="/WpfTutorialSamples;component/Images/text_italic.png" Width="16" Height="16" />
-                            </ToggleButton>
-                            <ToggleButton Command="EditingCommands.ToggleUnderline">
-                                <Image Source="/WpfTutorialSamples;component/Images/text_underline.png" Width="16" Height="16" />
-                            </ToggleButton>
-                            <Separator />
-                            <ComboBox Width="150" />
-                            <ComboBox Width="50" IsEditable="True" />
-                        </ToolBar>
-                        <RichTextBox x:Name="InputContent"
-                                     Document="{Binding SelectedArticle.Content}" />
-                    </DockPanel>
+                    <ScrollViewer Grid.Column="1">
+                        <TextBox x:Name="InputContent"
+                                 Text="{Binding Content}"
+                                 TextWrapping="WrapWithOverflow"
+                                 ScrollViewer.HorizontalScrollBarVisibility="Hidden"
+                                 ScrollViewer.VerticalScrollBarVisibility="Auto"
+                                 Style="{StaticResource StyleInput}"/>
+                    </ScrollViewer>
+
                 </Grid>
                 <Grid Grid.Row="2">
                     <Grid.ColumnDefinitions>
@@ -156,9 +140,11 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Button Grid.Column="0" Content="Очистить"
-                            Style="{StaticResource StyleButtonClear}" />
+                    <Button Grid.Column="0" Content="Отмена"
+                            Command="{Binding CommandCancel}"
+                            Style="{StaticResource StyleButtonCancel}" />
                     <Button Grid.Column="1" Content="Сохранить"
+                            Command="{Binding CommandSave}"
                             Style="{StaticResource StyleButtonSave}" />
                 </Grid>
             </Grid>
