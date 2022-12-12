@@ -22,7 +22,7 @@
                    BasedOn="{StaticResource StyleButtonDefault}">
                 <Setter Property="Background" Value="{StaticResource BackgroundColorSave}" />
             </Style>
-            <Style x:Key="StyleButtonClear" TargetType="{x:Type Button}"
+            <Style x:Key="StyleButtonCancel" TargetType="{x:Type Button}"
                    BasedOn="{StaticResource StyleButtonDefault}">
                 <Setter Property="Background" Value="{StaticResource BackgroundColorClear}" />
             </Style>
