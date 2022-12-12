@@ -28,7 +28,7 @@
         <KeyBinding Command="{Binding CommandConnect}"
                     Modifiers="Alt" Key="C" />
         <KeyBinding Command="{Binding CommandNew}"
-                    Key="Insert"/>
+                    Key="Insert" />
     </Window.InputBindings>
 
     <Grid>
@@ -130,7 +130,7 @@
                                  TextWrapping="WrapWithOverflow"
                                  ScrollViewer.HorizontalScrollBarVisibility="Hidden"
                                  ScrollViewer.VerticalScrollBarVisibility="Auto"
-                                 Style="{StaticResource StyleInput}"/>
+                                 Style="{StaticResource StyleInput}" />
                     </ScrollViewer>
 
                 </Grid>

@@ -29,6 +29,7 @@ public class MainWindowModel : BaseNotification
     public ObservableCollection<Article> Articles { get; set; }
 
     private string? _title;
+
     public string? Title
     {
         get => _title;
@@ -40,6 +41,7 @@ public class MainWindowModel : BaseNotification
     }
 
     private string? _content;
+
     public string? Content
     {
         get => _content;
@@ -63,7 +65,6 @@ public class MainWindowModel : BaseNotification
     #endregion
 
     #region StateValue
-
 
     private StateOptions _state;
 
@@ -89,22 +90,22 @@ public class MainWindowModel : BaseNotification
         _state = StateOptions.Unknown;
 
         CommandConnect = new LambdaCommand(
-            execute: async _ => await InitArticles(),
-            canExecute: _ => Articles.Count == 0
+            async _ => await InitArticles(),
+            _ => Articles.Count == 0
         );
 
         CommandCancel = new LambdaCommand(
-            execute: _ =>
+            _ =>
             {
                 SelectedArticle = null;
 
                 State = StateOptions.Unknown;
             },
-            canExecute: _ => !string.IsNullOrEmpty(Content) && !string.IsNullOrEmpty(Title)
+            _ => !string.IsNullOrEmpty(Content) && !string.IsNullOrEmpty(Title)
         );
 
         CommandSave = new LambdaCommand(
-            execute: async _ =>
+            async _ =>
             {
                 switch (State)
                 {
@@ -116,14 +117,14 @@ public class MainWindowModel : BaseNotification
                         break;
                     case StateOptions.Unknown:
                     default:
-                        throw new ArgumentOutOfRangeException();
+                        break;
                 }
             },
-            canExecute: _ => State is StateOptions.Editing or StateOptions.New
+            _ => State is StateOptions.Editing or StateOptions.New
         );
 
         CommandNew = new LambdaCommand(
-            execute: _ =>
+            _ =>
             {
                 SelectedArticle = new Article();
 
@@ -153,7 +154,7 @@ public class MainWindowModel : BaseNotification
 
     private async Task NewArticle()
     {
-        var article = new Article { Title = this.Title, Content = this.Content };
+        var article = new Article { Title = Title, Content = Content };
         await _articlesContext.InsertAsync(article);
 
         await InitArticles();
